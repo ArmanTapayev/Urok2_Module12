@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <locale.h>
@@ -18,78 +18,78 @@ void main()
 {
 
 	setlocale(LC_ALL, "RUS");
-	printf("В работе имеется 8 заданий.\n");
-	printf("Для выхода наберите 0.\n");
+	printf("Р’ СЂР°Р±РѕС‚Рµ РёРјРµРµС‚СЃСЏ 8 Р·Р°РґР°РЅРёР№.\n");
+	printf("Р”Р»СЏ РІС‹С…РѕРґР° РЅР°Р±РµСЂРёС‚Рµ 0.\n");
 	int n;
 
 	do
 	{
 
-		printf("\nВведите номер задания: \n");
+		printf("\nР’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ Р·Р°РґР°РЅРёСЏ: \n");
 		scanf("%d", &n);
 
 		switch (n)
 		{
 		case 1:
 		{
-			/*1. Имеется текстовый файл. Переписать его строки в другой файл.
-			Порядок строк во втором файле должен:
-			a.	совпадать с порядком строк в заданном файле;
-			b.	быть обратным по отношению к порядку строк в заданном файле. */
+			/*1. РРјРµРµС‚СЃСЏ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р». РџРµСЂРµРїРёСЃР°С‚СЊ РµРіРѕ СЃС‚СЂРѕРєРё РІ РґСЂСѓРіРѕР№ С„Р°Р№Р».
+			РџРѕСЂСЏРґРѕРє СЃС‚СЂРѕРє РІРѕ РІС‚РѕСЂРѕРј С„Р°Р№Р»Рµ РґРѕР»Р¶РµРЅ:
+			a.	СЃРѕРІРїР°РґР°С‚СЊ СЃ РїРѕСЂСЏРґРєРѕРј СЃС‚СЂРѕРє РІ Р·Р°РґР°РЅРЅРѕРј С„Р°Р№Р»Рµ;
+			b.	Р±С‹С‚СЊ РѕР±СЂР°С‚РЅС‹Рј РїРѕ РѕС‚РЅРѕС€РµРЅРёСЋ Рє РїРѕСЂСЏРґРєСѓ СЃС‚СЂРѕРє РІ Р·Р°РґР°РЅРЅРѕРј С„Р°Р№Р»Рµ. */
 
 			char path1[30] = "01.file1.txt";
 			char path2[30] = "01.file2.txt";
 
-			char string1[40] = "Я помню чудное мгновенье";
+			char string1[40] = "РЇ РїРѕРјРЅСЋ С‡СѓРґРЅРѕРµ РјРіРЅРѕРІРµРЅСЊРµ";
 			char string2[40];
 			char string3[40];
 			char string4[40];
 			char string5[40];
 
 			printf("a):\n");
-			printf("Записываем строку в файл 01.file1.txt\n");
+			printf("Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ С„Р°Р№Р» 01.file1.txt\n");
 
-			if ((fp = fopen(path1, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path1, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
 				fwrite(&string1, sizeof(string1), 1, fp);
 
 				rewind(fp);
 
-				fread(&string2, sizeof(string2), 1, fp); // читаем строку в string2
+				fread(&string2, sizeof(string2), 1, fp); // С‡РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РІ string2
 
-				printf("Читаем строку из файла 01.file1.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 01.file1.txt\n");
 				printf("\n%s\n", string2);
 
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
 			if ((fp = fopen(path2, "w+b")) != NULL)
 			{
-				printf("\nЗаписываем строку в файл 01.file2.txt\n");
+				printf("\nР—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ С„Р°Р№Р» 01.file2.txt\n");
 				fwrite(&string2, sizeof(string2), 1, fp);
 
 				rewind(fp);
 
 				fread(&string3, sizeof(string3), 1, fp);
 
-				printf("Читаем строку из файла 01.file2.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 01.file2.txt\n");
 				printf("\n%s\n", string3);
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 			printf("\n");
 			printf("b):\n");
 
-			if ((fp = fopen(path2, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path2, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
-				printf("Записываем строку в обратном порядке в файл 01.file2.txt\n");
+				printf("Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ РІ С„Р°Р№Р» 01.file2.txt\n");
 
 				char *first, *last, *start;
 				int flag = 0, i = 0;
@@ -129,12 +129,12 @@ void main()
 				rewind(fp);
 
 				fread(&string5, sizeof(string5), 1, fp);
-				printf("Читаем строку из файла 01.file2.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 01.file2.txt\n");
 				printf("\n%s\n", string5);
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
@@ -147,15 +147,15 @@ void main()
 
 		case 2:
 		{
-			/*2.	Имеется текстовый файл. Переписать его строки в обратном порядке (справа налево) в другой файл.
-			Порядок строк во втором файле должен:
-			a.	совпадать с порядком строк в заданном файле;
-			b.	быть обратным по отношению к порядку строк в заданном файле. */
+			/*2.	РРјРµРµС‚СЃСЏ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р». РџРµСЂРµРїРёСЃР°С‚СЊ РµРіРѕ СЃС‚СЂРѕРєРё РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ (СЃРїСЂР°РІР° РЅР°Р»РµРІРѕ) РІ РґСЂСѓРіРѕР№ С„Р°Р№Р».
+			РџРѕСЂСЏРґРѕРє СЃС‚СЂРѕРє РІРѕ РІС‚РѕСЂРѕРј С„Р°Р№Р»Рµ РґРѕР»Р¶РµРЅ:
+			a.	СЃРѕРІРїР°РґР°С‚СЊ СЃ РїРѕСЂСЏРґРєРѕРј СЃС‚СЂРѕРє РІ Р·Р°РґР°РЅРЅРѕРј С„Р°Р№Р»Рµ;
+			b.	Р±С‹С‚СЊ РѕР±СЂР°С‚РЅС‹Рј РїРѕ РѕС‚РЅРѕС€РµРЅРёСЋ Рє РїРѕСЂСЏРґРєСѓ СЃС‚СЂРѕРє РІ Р·Р°РґР°РЅРЅРѕРј С„Р°Р№Р»Рµ. */
 
 			char path3[30] = "02.file1.txt";
 			char path4[30] = "02.file2.txt";
 
-			char string1[30] = "У Лукоморья дуб зеленый";
+			char string1[30] = "РЈ Р›СѓРєРѕРјРѕСЂСЊСЏ РґСѓР± Р·РµР»РµРЅС‹Р№";
 			char string2[30];
 			char string3[30];
 			char string4[30];
@@ -163,30 +163,30 @@ void main()
 			char string6[30];
 
 			printf("a):\n");
-			printf("Записываем строку в файл 02.file1.txt\n");
+			printf("Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ С„Р°Р№Р» 02.file1.txt\n");
 
-			if ((fp = fopen(path3, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path3, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
 				fwrite(&string1, sizeof(string1), 1, fp);
 
 				rewind(fp);
 
-				fread(&string2, sizeof(string2), 1, fp); // читаем строку в string2
+				fread(&string2, sizeof(string2), 1, fp); // С‡РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РІ string2
 
-				printf("Читаем строку из файла 02.file1.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 02.file1.txt\n");
 				printf("\n%s\n", string2);
 
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 			printf("\n");
-			if ((fp = fopen(path4, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path4, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
 				strcpy(string3, string2);
-				printf("Записываем строку в обратном порядке в файл 02.file2.txt\n");
+				printf("Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ РѕР±СЂР°С‚РЅРѕРј РїРѕСЂСЏРґРєРµ РІ С„Р°Р№Р» 02.file2.txt\n");
 
 				char *first, *last, *start;
 				int flag = 0, i = 0;
@@ -226,33 +226,33 @@ void main()
 				rewind(fp);
 
 				fread(&string5, sizeof(string5), 1, fp);
-				printf("Читаем строку из файла 02.file2.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 02.file2.txt\n");
 				printf("\n%s\n", string5);
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 			printf("\n");
 			printf("b):\n");
 
-			if ((fp = fopen(path4, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path4, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
-				printf("Записываем строку в прямом порядке в файл 02.file2.txt\n");
+				printf("Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєСѓ РІ РїСЂСЏРјРѕРј РїРѕСЂСЏРґРєРµ РІ С„Р°Р№Р» 02.file2.txt\n");
 				fwrite(&string2, sizeof(string2), 1, fp);
 
 				rewind(fp);
 
-				fread(&string6, sizeof(string6), 1, fp); // читаем строку в string2
+				fread(&string6, sizeof(string6), 1, fp); // С‡РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РІ string2
 
-				printf("Читаем строку из файла 02.file2.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 02.file2.txt\n");
 				printf("\n%s\n", string6);
 
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
@@ -265,38 +265,38 @@ void main()
 
 		case 3:
 		{
-			/*3. Имеется текстовый файл. Получить текст, в котором
-			в конце каждой строки из заданного файла добавлен восклицательный знак.*/
+			/*3. РРјРµРµС‚СЃСЏ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р». РџРѕР»СѓС‡РёС‚СЊ С‚РµРєСЃС‚, РІ РєРѕС‚РѕСЂРѕРј
+			РІ РєРѕРЅС†Рµ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё РёР· Р·Р°РґР°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° РґРѕР±Р°РІР»РµРЅ РІРѕСЃРєР»РёС†Р°С‚РµР»СЊРЅС‹Р№ Р·РЅР°Рє.*/
 			char path5[30] = "03.file1.txt";
 			char path6[30] = "03.file2.txt";
 
-			char string1[50] = "У Лукоморья дуб зеленый. Златая цепь на дубе том.";
+			char string1[50] = "РЈ Р›СѓРєРѕРјРѕСЂСЊСЏ РґСѓР± Р·РµР»РµРЅС‹Р№. Р—Р»Р°С‚Р°СЏ С†РµРїСЊ РЅР° РґСѓР±Рµ С‚РѕРј.";
 			char string2[50];
 			char string3[50];
 
-			printf("Записываем строки в файл 03.file1.txt\n");
+			printf("Р—Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂРѕРєРё РІ С„Р°Р№Р» 03.file1.txt\n");
 
-			if ((fp = fopen(path5, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path5, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
 				fwrite(&string1, sizeof(string1), 1, fp);
 
 				rewind(fp);
 
-				fread(&string2, sizeof(string2), 1, fp); // читаем строку в string2
+				fread(&string2, sizeof(string2), 1, fp); // С‡РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РІ string2
 
-				printf("Читаем строку из файла 03.file1.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 03.file1.txt\n");
 				printf("\n%s\n", string2);
 
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
-			if ((fp = fopen(path6, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path6, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
-				printf("\nЗаписываем измененную строку в файл 03.file2.txt\n");
+				printf("\nР—Р°РїРёСЃС‹РІР°РµРј РёР·РјРµРЅРµРЅРЅСѓСЋ СЃС‚СЂРѕРєСѓ РІ С„Р°Р№Р» 03.file2.txt\n");
 
 				for (int i = 0; string2[i] != '\0'; i++)
 				{
@@ -308,13 +308,13 @@ void main()
 				rewind(fp);
 
 				fread(&string3, sizeof(string3), 1, fp);
-				printf("Читаем строку из файла 03.file2.txt\n");
+				printf("Р§РёС‚Р°РµРј СЃС‚СЂРѕРєСѓ РёР· С„Р°Р№Р»Р° 03.file2.txt\n");
 				printf("\n%s\n", string3);
 				printf("\n");
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
@@ -327,15 +327,15 @@ void main()
 
 		case 4:
 		{
-			/*4. Дан файл, содержащий различные даты. Каждая дата - это число,
-			месяц и год. Найти самую позднюю дату.*/
+			/*4. Р”Р°РЅ С„Р°Р№Р», СЃРѕРґРµСЂР¶Р°С‰РёР№ СЂР°Р·Р»РёС‡РЅС‹Рµ РґР°С‚С‹. РљР°Р¶РґР°СЏ РґР°С‚Р° - СЌС‚Рѕ С‡РёСЃР»Рѕ,
+			РјРµСЃСЏС† Рё РіРѕРґ. РќР°Р№С‚Рё СЃР°РјСѓСЋ РїРѕР·РґРЅСЋСЋ РґР°С‚Сѓ.*/
 			char path[30] = "04.file1.txt";
 			int count = 10;
 			DATE *dates = (DATE*)calloc(count, sizeof(DATE));
 
-			printf("Записываем даты в файл 04.file1.txt\n");
+			printf("Р—Р°РїРёСЃС‹РІР°РµРј РґР°С‚С‹ РІ С„Р°Р№Р» 04.file1.txt\n");
 
-			if ((fp = fopen(path, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path, "w+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
 				for (int i = 0; i < count; i++)
 				{
@@ -351,13 +351,13 @@ void main()
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
 			DATE *dates1 = (DATE*)calloc(count, sizeof(DATE));
 
-			if ((fp = fopen(path, "r+b")) != NULL) // создаем бинарный файл для чтения/записи
+			if ((fp = fopen(path, "r+b")) != NULL) // СЃРѕР·РґР°РµРј Р±РёРЅР°СЂРЅС‹Р№ С„Р°Р№Р» РґР»СЏ С‡С‚РµРЅРёСЏ/Р·Р°РїРёСЃРё
 			{
 				rewind(fp);
 
@@ -390,17 +390,17 @@ void main()
 						mYear = (dates1 + i)->year;
 						maxIndex = i;
 					}
-					//printf("Самая поздняя дата: %d.%d.%d  \n", mDay, mMonth, mYear);
+					//printf("РЎР°РјР°СЏ РїРѕР·РґРЅСЏСЏ РґР°С‚Р°: %d.%d.%d  \n", mDay, mMonth, mYear);
 				}
 				printf("\n");
-				printf("\nСамая поздняя дата: %d.%d.%d\n", (dates1 + maxIndex)->day, (dates1 + maxIndex)->month, (dates1 + maxIndex)->year);
+				printf("\nРЎР°РјР°СЏ РїРѕР·РґРЅСЏСЏ РґР°С‚Р°: %d.%d.%d\n", (dates1 + maxIndex)->day, (dates1 + maxIndex)->month, (dates1 + maxIndex)->year);
 
 				printf("\n");
 
 			}
 			else
 			{
-				printf("Ошибка!");
+				printf("РћС€РёР±РєР°!");
 				exit(1);
 			}
 
@@ -418,7 +418,7 @@ void main()
 			char path3[15] = "05.h.txt";
 			int count = 10, even = 0, odd = 0;
 
-			int *f = (int*)calloc(count, sizeof(int)); // для всех чисел
+			int *f = (int*)calloc(count, sizeof(int)); // РґР»СЏ РІСЃРµС… С‡РёСЃРµР»
 
 			if ((fp = fopen(path1, "w+b")) != NULL)
 			{
@@ -433,7 +433,7 @@ void main()
 				}
 				else
 				{
-					printf("Ошибка!");
+					printf("РћС€РёР±РєР°!");
 					exit(1);
 				}
 				fwrite(f, count * sizeof(int), 1, fp);
@@ -442,7 +442,7 @@ void main()
 
 			int *f1 = (int*)calloc(count, sizeof(int));
 
-			printf("Числа в файле \"05.f.txt\" для всех чисел:\n");
+			printf("Р§РёСЃР»Р° РІ С„Р°Р№Р»Рµ \"05.f.txt\" РґР»СЏ РІСЃРµС… С‡РёСЃРµР»:\n");
 			if ((fp = fopen(path1, "r+b")) != NULL)
 			{
 				fread(f1, count * sizeof(int), 1, fp);
@@ -467,8 +467,8 @@ void main()
 				}
 			}
 
-			int *g = (int*)calloc(even, sizeof(int)); // для четных чисел
-			int *h = (int*)calloc(odd, sizeof(int)); // для нечетных чисел
+			int *g = (int*)calloc(even, sizeof(int)); // РґР»СЏ С‡РµС‚РЅС‹С… С‡РёСЃРµР»
+			int *h = (int*)calloc(odd, sizeof(int)); // РґР»СЏ РЅРµС‡РµС‚РЅС‹С… С‡РёСЃРµР»
 			even = 0, odd = 0;
 			for (int i = 0; i < count; i++)
 			{
@@ -497,7 +497,7 @@ void main()
 
 			int *g1 = (int*)calloc(even, sizeof(int));
 
-			printf("\n\nЧисла в файле \"05.g.txt\" для четных чисел:\n");
+			printf("\n\nР§РёСЃР»Р° РІ С„Р°Р№Р»Рµ \"05.g.txt\" РґР»СЏ С‡РµС‚РЅС‹С… С‡РёСЃРµР»:\n");
 			if ((fp = fopen(path2, "r+b")) != NULL)
 			{
 				fread(g1, even * sizeof(int), 1, fp);
@@ -507,7 +507,7 @@ void main()
 				}
 			}
 
-			printf("\n\nЧисла в файле \"05.р.txt\" для нечетных чисел:\n");
+			printf("\n\nР§РёСЃР»Р° РІ С„Р°Р№Р»Рµ \"05.СЂ.txt\" РґР»СЏ РЅРµС‡РµС‚РЅС‹С… С‡РёСЃРµР»:\n");
 			int *h1 = (int*)calloc(odd, sizeof(int));
 			if ((fp = fopen(path3, "r+b")) != NULL)
 			{
@@ -552,7 +552,7 @@ void main()
 				}
 				else
 				{
-					printf("Ошибка!");
+					printf("РћС€РёР±РєР°!");
 					exit(1);
 				}
 				fwrite(pr, count * sizeof(Product), 1, fp);
@@ -572,8 +572,8 @@ void main()
 			{
 				sum += (pr4 + i)->price;
 			}
-			printf("Общая стоимость товаров: %d\n", sum);
-			printf("Средняя стоимость товаров: %0.2f\n", (float)sum / count);
+			printf("РћР±С‰Р°СЏ СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂРѕРІ: %d\n", sum);
+			printf("РЎСЂРµРґРЅСЏСЏ СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂРѕРІ: %0.2f\n", (float)sum / count);
 
 		}break;
 
@@ -601,7 +601,7 @@ void main()
 				}
 				else
 				{
-					printf("Ошибка!");
+					printf("РћС€РёР±РєР°!");
 					exit(1);
 				}
 
@@ -615,7 +615,7 @@ void main()
 				fread(cmp4, count * sizeof(Computer), 1, fp);
 				printInfoComp(cmp4, count);
 			}
-			printf("\nКомпьютеры ASUS с частотой процессора более 2 ГГц/сек:\n");
+			printf("\nРљРѕРјРїСЊСЋС‚РµСЂС‹ ASUS СЃ С‡Р°СЃС‚РѕС‚РѕР№ РїСЂРѕС†РµСЃСЃРѕСЂР° Р±РѕР»РµРµ 2 Р“Р“С†/СЃРµРє:\n");
 			for (int i = 0; i < count; i++)
 			{
 				if ((strcmp((cmp4 + i)->cmpMkr.mkr, "ASUS ") == 0) && (cmp4 + i)->frequency > 2)
