@@ -1,4 +1,4 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<iostream>
 #include<locale.h>
 #include<string.h>
@@ -6,8 +6,8 @@
 #include "Header1.h"
 
 
-/* Ôóíêöèÿ â çàäàííîé ñòðîêå ðàñïîëîãàåò âñå ñëîâà â îáðàòíîì ïîðÿäêå .
-Ðàçäåëèòåëÿìè ñëîâ ñ÷èòàþòñÿ ïðîáåëû*/
+/* Ð¤ÑƒÐ½ÐºÑ†Ð¸Ñ Ð² Ð·Ð°Ð´Ð°Ð½Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð¾ÐºÐµ Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð³Ð°ÐµÑ‚ Ð²ÑÐµ ÑÐ»Ð¾Ð²Ð° Ð² Ð¾Ð±Ñ€Ð°Ñ‚Ð½Ð¾Ð¼ Ð¿Ð¾Ñ€ÑÐ´ÐºÐµ .
+Ð Ð°Ð·Ð´ÐµÐ»Ð¸Ñ‚ÐµÐ»ÑÐ¼Ð¸ ÑÐ»Ð¾Ð² ÑÑ‡Ð¸Ñ‚Ð°ÑŽÑ‚ÑÑ Ð¿Ñ€Ð¾Ð±ÐµÐ»Ñ‹*/
 
 void swapString(char *first, char *second)
 {
@@ -64,7 +64,7 @@ void generateDate(DATE *date)
 	date->year = 1980 + rand() % 20;
 }
 
-/* Çàäàíèå 7 */
+/* Ð—Ð°Ð´Ð°Ð½Ð¸Ðµ 7 */
 void generateProduct(Article *pr)
 {
 	int rnd = 0 + rand() % 4;
@@ -72,19 +72,19 @@ void generateProduct(Article *pr)
 	switch (rnd)
 	{
 	case 0:
-		strcpy(pr->articles, "Êîìïüþòåð");
+		strcpy(pr->articles, "ÐšÐ¾Ð¼Ð¿ÑŒÑŽÑ‚ÐµÑ€");
 		break;
 
 	case 1:
-		strcpy(pr->articles, "Ïëàíøåò");
+		strcpy(pr->articles, "ÐŸÐ»Ð°Ð½ÑˆÐµÑ‚");
 		break;
 
 	case 2:
-		strcpy(pr->articles, "Ñìàðòôîí");
+		strcpy(pr->articles, "Ð¡Ð¼Ð°Ñ€Ñ‚Ñ„Ð¾Ð½");
 		break;
 
 	case 3:
-		strcpy(pr->articles, "Òåëåâèçîð");
+		strcpy(pr->articles, "Ð¢ÐµÐ»ÐµÐ²Ð¸Ð·Ð¾Ñ€");
 		break;
 	}
 }
@@ -94,7 +94,7 @@ void printInfoProduct(Product  * pr, int len)
 {
 	for (int i = 0; i < len; i++)
 	{
-		printf("#%2d. %12s: Êîëè÷åñòâî %d, Öåíà %d\n",
+		printf("#%2d. %12s: ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ %d, Ð¦ÐµÐ½Ð° %d\n",
 			i + 1,
 			pr[i].art.articles,
 			pr[i].quantity,
@@ -104,19 +104,19 @@ void printInfoProduct(Product  * pr, int len)
 
 void printInfoProductInd(Product * pr, int index)
 {
-	printf("%12s: Êîëè÷åñòâî %d, Öåíà %d\n",
+	printf("%12s: ÐšÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ %d, Ð¦ÐµÐ½Ð° %d\n",
 		pr[index].art.articles,
 		pr[index].quantity,
 		pr[index].price);
 }
 
-/* Çàäàíèå 8 */
+/* Ð—Ð°Ð´Ð°Ð½Ð¸Ðµ 8 */
 
 void printInfoComp(Computer  * cmp, int len)
 {
 	for (int i = 0; i < len; i++)
 	{
-		printf("#%2d. %7s: ×àñòîòà %d, RAM %d, DVD ROM %d, Ñòîèìîñòü %d\n",
+		printf("#%2d. %7s: Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð° %d, RAM %d, DVD ROM %d, Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ %d\n",
 			i + 1,
 			cmp[i].cmpMkr.mkr,
 			cmp[i].frequency,
@@ -128,7 +128,7 @@ void printInfoComp(Computer  * cmp, int len)
 
 void printInfoCompInd(Computer  * cmp, int index)
 {
-	printf("%s: ×àñòîòà %d, RAM %d, DVD ROM %d, Ñòîèìîñòü %d\n",
+	printf("%s: Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð° %d, RAM %d, DVD ROM %d, Ð¡Ñ‚Ð¾Ð¸Ð¼Ð¾ÑÑ‚ÑŒ %d\n",
 		cmp[index].cmpMkr.mkr,
 		cmp[index].frequency,
 		cmp[index].RAM,

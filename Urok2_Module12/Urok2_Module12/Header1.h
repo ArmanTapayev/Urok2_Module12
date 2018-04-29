@@ -1,4 +1,4 @@
-
+п»ї
 struct DATE
 {
 	int day;
@@ -12,7 +12,7 @@ struct task4
 };
 
 
-/* Задание 7 */
+/* Р—Р°РґР°РЅРёРµ 7 */
 struct Article
 {
 	char articles[30];
@@ -25,7 +25,7 @@ struct Product
 	int price;
 };
 
-/* Задание 8 */
+/* Р—Р°РґР°РЅРёРµ 8 */
 struct Maker
 {
 	char mkr[10];
