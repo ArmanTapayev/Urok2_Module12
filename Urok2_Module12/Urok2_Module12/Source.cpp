@@ -527,7 +527,107 @@ void main()
 
 		case 6:
 		{
+			/*6. В первом файле хранится k матриц из n строк и n+1 столбцов каждая 
+				 (последний столбец - столбец свободных членов). Во втором файле 
+				 хранится k векторов - результатов решений соответствующих систем ЛАУ 
+				 с матрицами из первого файла. Вывести на экран покомпонентно исходную 
+				 систему уравнений и результат, проверив его предварительно; добавить 
+				 в файлы новые данные; удалить ненужную информацию.*/
 
+			char path1[30] = "06.matrix.txt";
+			int count = 2;
+
+			structMatrix *matrix;
+
+			DrawLine();
+			printf("Записываем данные в файл 06.matrix.txt\n");
+
+			matrix = GenerateMatrix(&count);
+
+			PrintInfoMatrix(matrix, count);
+
+				if ((fp = fopen(path1, "w+b")) != NULL)
+				{
+					fwrite(matrix, count * sizeof(structMatrix), 1, fp);
+				}
+				else
+				{
+					printf("Ошибка!");
+					exit(1);
+				}
+
+			fclose(fp);
+
+			structMatrix *matrix2 = (structMatrix*)calloc(count, sizeof(structMatrix));
+
+			DrawLine();
+			printf("Считываем данные из файла 06.matrix.txt\n");
+
+				if ((fp = fopen(path1, "r+b")) != NULL)
+				{
+					rewind(fp);
+
+					fread(matrix2, count * sizeof(structMatrix), 1, fp);
+
+					int k, x, y, z;
+					printf("Введите номер матрицы ЛАУ, строки и столбца элемента системы для изменения:\n");
+					
+					scanf("%d", &k);
+					scanf("%d", &x);
+					scanf("%d", &y);
+
+					printf("Введите значение для изменения:\n");
+
+					scanf("%d", &z);
+
+					(matrix2 + k)->X.Xn[x][y] = z;
+
+					PrintInfoMatrix(matrix2, count);
+				}
+				fclose(fp);
+
+			DrawLine();
+
+			printf("Записываем данные в файл 06.matrix.txt\n");
+
+				if ((fp = fopen(path1, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+				{
+					fwrite(matrix2, count * sizeof(structMatrix), 1, fp);
+				}
+			fclose(fp);
+
+			structMatrix *matrix3 = (structMatrix*)calloc(count, sizeof(structMatrix));
+
+				if ((fp = fopen(path1, "r+b")) != NULL)
+				{
+					rewind(fp);
+
+					fread(matrix3, count * sizeof(structMatrix), 1, fp);
+
+					int k, x, y, z;
+					
+					printf("Введите номер матрицы ЛАУ, номера строки и столбца элемента системы для удаления:\n");
+				
+					scanf("%d", &k);
+					scanf("%d", &x);
+					scanf("%d", &y);
+				
+					(matrix3 + k)->X.Xn[x][y] = 0;
+					PrintInfoMatrix(matrix3, count);
+				}
+				fclose(fp);
+
+			printf("Записываем данные в файл 06.matrix.txt\n");
+
+				if ((fp = fopen(path1, "w+b")) != NULL) // создаем бинарный файл для чтения/записи
+				{
+					fwrite(matrix3, count * sizeof(structMatrix), 1, fp);
+				}
+				fclose(fp);
+
+			printf("\n");
+			system("pause");
+			system("cls");
 
 		}break;
 

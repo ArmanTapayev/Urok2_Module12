@@ -11,6 +11,22 @@ struct task4
 	DATE task4Dates;
 };
 
+/* Задание 6 */
+struct structX
+{
+	int Xn[3][4];		
+};
+
+struct structY
+{
+	int Yn[3];
+};
+
+struct structMatrix
+{
+	structX X;
+	structY Y;
+};
 
 /* Задание 7 */
 struct Article

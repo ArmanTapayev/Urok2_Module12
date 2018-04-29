@@ -6,6 +6,11 @@
 #include "Header1.h"
 
 
+void DrawLine()
+{
+	printf("-----------------------------------------------\n");
+}
+
 /* Функция в заданной строке распологает все слова в обратном порядке .
 Разделителями слов считаются пробелы*/
 
@@ -63,6 +68,81 @@ void generateDate(DATE *date)
 	date->month = 1 + rand() % 12;
 	date->year = 1980 + rand() % 20;
 }
+
+/* Задание 6 */
+void GenerateX(structX *x)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 4; j++)
+		{
+			x->Xn[i][j] = 1 + rand() % 9;
+		}
+	
+	}
+}
+
+void GenerateY(structY *y)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		y->Yn[i]= 1 + rand() % 9;
+	}
+}
+void PrintInfoMatrix(structMatrix * matrix, int count)
+{
+	for (int l = 0; l < count; l++)
+	{
+		DrawLine();
+		printf("Система линейных уравнений %d:\n", l+1);
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 4; j++)
+			{
+				if (j == 0)
+					printf("%dx + ", (matrix + l)->X.Xn[i][j]);
+				if (j == 1)
+					printf("%dx + ", (matrix + l)->X.Xn[i][j]);
+				if (j == 2 )
+					printf("%dx = ", (matrix + l)->X.Xn[i][j]);
+				if (j == 3)
+					printf("%d\n", (matrix + l)->X.Xn[i][j]);
+			}
+			//printf("\n");
+		}
+		//printf("\n");
+		printf("Решение системы уравнений:\n");
+		for (int i = 0; i < 3; i++)
+		{
+			printf("y%d = %d  ",i, (matrix + l)->Y.Yn[i]);
+		}
+		
+		printf("\n");
+		DrawLine();
+	}
+}
+
+structMatrix *GenerateMatrix(int *count)
+{
+	structMatrix *matrix = (structMatrix*)calloc(*count, sizeof(structMatrix));
+	if (matrix != NULL)
+	{
+		for (int i = 0; i < *count; i++)
+		{
+			GenerateX(&(matrix+i)->X);
+			GenerateY(&(matrix + i)->Y);
+		}
+	}
+	else
+	{
+		printf("Ошибка!");
+		exit(1);
+	}
+	return matrix;
+}
+
+
 
 /* Задание 7 */
 void generateProduct(Article *pr)
